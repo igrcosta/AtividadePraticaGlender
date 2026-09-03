@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Aluno {
     private String nome;
     private int idade;
@@ -8,6 +10,11 @@ public class Aluno {
     private double estrategia;
     private double criatividade;
     private String casa;
+
+    //coisas da 2a parte
+    private LocalDate data_nascimento;
+    private String codigoMatricula;
+    private boolean Maioridade = false;
 
     public Aluno(String nome, int idade, double coragem, double inteligencia, double ambicao, double lealdade, double estrategia, double criatividade) {
         this.nome = nome;
@@ -43,6 +50,53 @@ public class Aluno {
             this.casa = "Lufa-Lufa";
         }
     }
+
+    //segunda parte -> INÍCIO
+
+    private LocalDate anoAtual = LocalDate.now();
+
+    public void calcularIdade(){
+        setIdade(anoAtual.getYear() - data_nascimento.getYear());
+        //isso vai me retornar a idade aproximada e jogar dentro da idade do aluno
+    }
+
+    public void verificarMaioridade(){
+        if (getIdade() >= 17)
+        {
+            Maioridade = true;
+        }
+        else{
+            Maioridade = false;
+        }
+    }
+
+    public void reformatarCasa(){
+        //tenho que pegar a string do nome e converter ela
+        if (nome != null)
+        {
+            setNome(nome.toUpperCase());
+        }
+    }
+
+    public void gerarUsername(){
+        //precisa ser primeira letra do nome + sobrenome completo minúsculo
+
+        String primeiraLetra = getNome().substring(0,1);
+        //substring é literalmente eliminar tudo da string e deixar só o que você seleciona com begin e end Index
+
+        //agora vou precisar pegar o nome e separar em palavras, pra aí sim, eu pegar a 2a palavra, conhecida como sobrenome de onde eu venho
+
+        String[] palavras = getNome().split(" ");
+        //com esse espaço em branco, separamos o nome em arrays de strings, se o cara botar o nome completo sem espaço, aí ferrou
+
+        if (palavras > 1)
+        {
+
+        }
+
+
+    }
+    //segunda parte -> FIM
 
     public void exibirInformacoes() {
         System.out.println("====================================");
